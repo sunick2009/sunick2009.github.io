@@ -3,10 +3,17 @@ language: node_js
 node_js:
   - 10 # use nodejs v10 LTS
 cache: npm
+before_install:
+  - npm install cheerio@0.22.0 –save # prepare theme
+  - npm install hexo-renderer-pug hexo-renderer-stylus --save
+  - npm un hexo-renderer-marked --save # change render
+  - npm i hexo-renderer-markdown-it --save
+  - npm install hexo-generator-search --save # prepare local search
 branches:
   only:
     - hexo-source # get the source code 
 script:
+  - hexo clean
   - hexo generate # generate static files
 deploy:
   provider: pages
