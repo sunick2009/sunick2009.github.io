@@ -207,6 +207,6 @@ img.emoji {
 在打這篇文章的時候在聽這場直播存檔，實在是很喜歡yin的聲音呢，能拉高音，能唱很甜的歌，能用成熟的歌喉唱
 但不知道為啥咪他的人氣都不高呢，希望他有一天能成為知名的翻唱歌手:two_hearts: 
 **こんばんは～(niconico同時配信)**
-[![](http://img.youtube.com/vi/rxjTLGJta9U/0.jpg)](http://www.youtube.com/watch?v=rxjTLGJta9U "こんばんは～(niconico同時配信)")
+[![](https://img.youtube.com/vi/rxjTLGJta9U/0.jpg)](http://www.youtube.com/watch?v=rxjTLGJta9U "こんばんは～(niconico同時配信)")
 另外付上頭圖的PIXIV
 [鏡のむこう](https://www.pixiv.net/artworks/76243022)
