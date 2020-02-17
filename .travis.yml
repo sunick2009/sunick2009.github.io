@@ -12,7 +12,8 @@ deploy:
   provider: pages
   skip-cleanup: true
   github-token: $GH_TOKEN
+  target-branch: master # put the page to where it should be
   keep-history: true
   on:
-    branch: master # put the page to where it should be
+    branch: hexo-source 
   local-dir: public
