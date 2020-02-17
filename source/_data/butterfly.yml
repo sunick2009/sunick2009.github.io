@@ -242,7 +242,7 @@ ICP:
 baidu_analytics:
 
 # Google Analytics
-google_analytics:
+google_analytics: UA-158679472-1
 
 # Tencent_analytics ID
 tencent_analytics:
@@ -259,7 +259,7 @@ google_adsense:
 ####    站長驗證    ####
 # Google Webmaster tools verification setting
 # See: https://www.google.com/webmasters/
-google_site_verification:
+google_site_verification: google-site-verification=BVjq85QtM1ejI-lD_4FfPiOJGFi_y_396uGllb_WK78
 
 # Bing Webmaster tools verification setting
 # See: https://www.bing.com/webmaster/
