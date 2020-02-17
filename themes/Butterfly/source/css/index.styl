@@ -1,0 +1,29 @@
+@import 'nib'
+@import '_third-party/normalize.min.css'
+// project
+@import 'var'
+@import '_global'
+@import '_highlight/highlight'
+@import '_layout/*'
+
+// search
+if hexo-config('algolia_search.enable')
+  @import '_search/index'
+  @import '_search/algolia'
+
+if hexo-config('local_search') && hexo-config('local_search.enable')
+  @import '_search/index'
+  @import '_search/local-search'
+
+//emoji
+img.emoji {
+	height: 1.5em;
+	width: 1.5em;
+	margin: 0.05em 0.1em;
+    padding: 0px;
+    display: inline !important;
+    vertical-align: -1.5em;
+    border: none;
+    cursor: text;
+    box-shadow: none;
+}
