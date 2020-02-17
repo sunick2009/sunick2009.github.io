@@ -7,8 +7,11 @@ before_install:
   - npm install cheerio@0.22.0 –save # prepare theme
   - npm install hexo-renderer-pug hexo-renderer-stylus --save
   - npm un hexo-renderer-marked --save # change render
-  - npm i hexo-renderer-markdown-it --save
+  - npm install hexo-renderer-markdown-it --save
+  - npm install markdown-it-emoji --save # add emoji plugin
   - npm install hexo-generator-search --save # prepare local search
+  - git fetch
+  - git checkout sunick2009.github.io/hexo-source -- node_modules/markdown-it-emoji/index.js
 branches:
   only:
     - hexo-source # get the source code 
