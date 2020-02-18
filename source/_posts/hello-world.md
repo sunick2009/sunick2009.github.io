@@ -5,7 +5,7 @@ date: 2020/02/17
 tags: 
   - css
   - js 
-categories: 修改主題
+categories: 教學
 comments: true
 description:
 top_img: https://i.imgur.com/gKaHhTW.png
