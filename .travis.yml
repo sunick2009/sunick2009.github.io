@@ -10,6 +10,8 @@ before_script:
   - npm install hexo-renderer-markdown-it --save
   - npm install markdown-it-emoji --save # add emoji plugin
   - npm install hexo-generator-search --save # prepare local search
+  - npm install hexo-generator-feed # prepare rss
+  - npm install hexo-generator-sitemap # prepare sitemap
   - git fetch #add edited file
   - git checkout -- node_modules/markdown-it-emoji/index.js
 branches:
