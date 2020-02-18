@@ -24,16 +24,16 @@ Netlify、Rsync、OpenShift、etc.....](https://hexo.io/docs/one-command-deploym
 該名稱最早由[1]葛來迪·布區（Grady Booch）在他的布區方法[2]中提出，在測試驅動開發（TDD）的作法中，通常還會搭配自動單元測試。
 持續整合的提出主要是為解決軟體進行系統整合時面臨的各項問題，極限編程稱這些問題為整合地獄（integration hell）。
 
-這是什麼意思呢，也就是說，這其實要告像是工廠流水線一般的自動化方法，
-通常來說是用來做自動化測試之類的，不過在我們這邊部署博客的應用，就是讓我們做完任何一個commit並且push到remote後
-可以自動化的部署到我們的生產環境，也就是我們的博客，我們可以看到連[Hexo的官方文檔](https://hexo.io/docs/github-pages#Private-repository)都推薦我們這麼做
+這是什麼意思呢，也就是說，這其實要就像是工廠流水線一般的自動化方法，
+通常來說是用來做自動化測試之類的，不過在我們這邊用來做部署博客的應用，就是讓我們做完任何一個commit並且push到remote後
+可以自動化的部署到我們的生產環境，也就是我們的博客頁面，我們可以看到連[Hexo的官方文檔](https://hexo.io/docs/github-pages)都推薦我們這麼做
 
 ### 第一步
 #### 跟著他提供的教學做
 ~~這不是廢話嘛~~ :rage:，如果文檔看不慣英文的話，右上角可以切換到中文
 但是重點來了，GitHub Pages在去年改了一些措施
 ![](https://i.imgur.com/K5SdrFY.png)
-如果我們按造官方文檔操作的話，最後會開了一個分支叫做gh-pages，裡面放了我們的網頁，但這樣就不符合我們的需求了
+如果我們按照官方文檔操作的話，最後會開了一個分支叫做gh-pages，裡面放了我們的網頁，但這樣就不符合我們的需求了
 <img src="https://i.imgur.com/28LGb77.jpg" width="50%" height="50%">
 好啦，以上是梗圖，勿當真，本來看文檔就應注意時間吧，~~所以是使用者的問題~~
 所以當我們操作到第八步的時候，我們得先停下來
@@ -127,7 +127,11 @@ make: Leaving directory '/home/travis/build/sunick2009/sunick2009.github.io/node
 added 600 packages in 5.118s
 ```
 第二行他告訴了我們進行`npm ci`前你他會把它先把本地安裝的模組給刪掉，才進行`npm ci`，我看是部署環境吧，看這裡有詳細 [npm ci 命令](https://blog.csdn.net/csdn_yudong/article/details/84929546)
-所以我們需要裝的東西得等到他先裝完他所需要的
+
+~~所以我們需要裝的東西得等到他先裝完他所需要的~~ `npm ci`是作為自動化部署使用的，所以我們在根目錄的`package-lock.json`會跟他講要裝那些東西
+
+基本上，`before_script`這步就不是很需要了，可以刪除大多數install的東西，不過為了保險起見你也是可以留下啦，只是部署的時間會稍微拉長
+
 #####
 :two: 
 這邊因為我想安裝**Twemoji**，所以得更動`node_modules/markdown-it-emoji/index.js`裡的內容
@@ -147,4 +151,5 @@ Travis CI就會自動介入來去處理我們的頁面，而且我們可以在Tr
 *灑花* :tada: :tada: :tada:
 然後你就可以前往你的網址中看到你的網頁了
 ## 總結
-搞這個其實還滿有趣的，而且以後只要在能git的環境下都能寫博客啦，真ㄅㄧㄤˋ !:laughing: 
+搞這個其實還滿有趣的，而且以後只要在能git的環境下都能寫博客啦，真ㄅㄧㄤˋ !:laughing:
+補上頭圖的PIXIV [ZIPANG](https://www.pixiv.net/artworks/76752787)
