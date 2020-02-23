@@ -29,9 +29,11 @@ $ sudo do-release-upgrade -d
 這樣就可以了
 
 來源資料
+
 [Why am I not getting the Ubuntu 18.04 upgrade?](https://askubuntu.com/questions/1028949/why-am-i-not-getting-the-ubuntu-18-04-upgrade)
 [Upgrading LTS to LTS (server) — why wait for the first point release?](https://askubuntu.com/questions/125825/upgrading-lts-to-lts-server-why-wait-for-the-first-point-release)
 [How do I upgrade to a newer version of Ubuntu?](https://askubuntu.com/questions/110477/how-do-i-upgrade-to-a-newer-version-of-ubuntu)
+
 ---
 ## 升級後web伺服器頁面爆炸
 
