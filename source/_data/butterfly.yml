@@ -9,6 +9,7 @@ menu:
   時間軸: /archives/ || fa fa-archive
   標籤: /tags/ || fa fa-tags
   分類: /categories/ || fa fa-folder-open
+  留言板: /message board/ || fa fa-comments
 #  關於: /about/ || fa fa-heart
 
 # Favicon
