@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>升級Linux</title>
+      <link href="/2020/02/22/note#1/"/>
+      <url>/2020/02/22/note#1/</url>
+      
+        <content type="html"><![CDATA[<h2 id="導言">導言</h2><p>最近在做定期的SERVER維護，來筆記下做版本升級所發現的事好了<img class="emoji lazyload" draggable="false" alt="😁" data-src="https://twemoji.maxcdn.com/v/12.1.5/72x72/1f601.png" src="https://i.imgur.com/WS5Q2x3.gif"></p><hr><h2 id="d-的差異">&quot;-d&quot;的差異</h2><p>通常做版本身升級，都是直接</p><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">shell</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo <span class="keyword">do</span>-release-upgrade</span></span><br></pre></td></tr></table></figure></div><p>可是如果在本身版本是LTS的情況下，在發布時間的前後就會有<em>No new release found</em>的情況，所以就要補上參數讓他強制升級<br>我的情況是已經放到離最新版本好遠了，也是同樣情況，所以也得上<code>-d</code>參數</p><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">shell</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo <span class="keyword">do</span>-release-upgrade -d</span></span><br></pre></td></tr></table></figure></div><p>這樣就可以了</p><h2 id="來源資料Why-am-I-not-getting-the-Ubuntu-18-04-upgrade-Upgrading-LTS-to-LTS-server-—-why-wait-for-the-first-point-release-How-do-I-upgrade-to-a-newer-version-of-Ubuntu">來源資料<br><a href="https://askubuntu.com/questions/1028949/why-am-i-not-getting-the-ubuntu-18-04-upgrade" target="_blank" rel="noopener">Why am I not getting the Ubuntu 18.04 upgrade?</a><br><a href="https://askubuntu.com/questions/125825/upgrading-lts-to-lts-server-why-wait-for-the-first-point-release" target="_blank" rel="noopener">Upgrading LTS to LTS (server) — why wait for the first point release?</a><br><a href="https://askubuntu.com/questions/110477/how-do-i-upgrade-to-a-newer-version-of-ubuntu" target="_blank" rel="noopener">How do I upgrade to a newer version of Ubuntu?</a></h2><h2 id="升級後web伺服器頁面爆炸">升級後web伺服器頁面爆炸</h2><p>當我升級完後，發現php貌似被系統關掉了，開啟頁面只會看到純文字的php文件<br>第一時間去檢查<code>/etc/apache2/mods-enabled</code>就發現了php不再裏頭<br>那麼我們就只要</p><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">shell</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo a2emnod php7.2</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo systemctl restart apache2</span></span><br></pre></td></tr></table></figure></div><p>這樣就搞定了</p><hr><h2 id="題外話">題外話</h2><p>附上頭圖的<a href="https://www.pixiv.net/artworks/78157723" target="_blank" rel="noopener">PIXIV</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 筆記 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ubuntu </tag>
+            
+            <tag> upgrade </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>利用 Travis CI 做自動化部署</title>
       <link href="/2020/02/17/deploy/"/>
       <url>/2020/02/17/deploy/</url>
