@@ -8,8 +8,8 @@ tags:
 categories: 教學
 comments: true
 description:
-top_img: https://i.imgur.com/oOHN8Lk.png
-cover: https://i.imgur.com/oOHN8Lk.png
+top_img: https://i.imgur.com/iLeCvsr.jpg
+cover: https://i.imgur.com/iLeCvsr.jpg
 ---
 ## 導言
 當你打造好了漂漂亮亮的網站當然是就要部署啊，所以這篇我們來談談部署吧:grin: 
@@ -152,4 +152,3 @@ Travis CI就會自動介入來去處理我們的頁面，而且我們可以在Tr
 然後你就可以前往你的網址中看到你的網頁了
 ## 總結
 搞這個其實還滿有趣的，而且以後只要在能git的環境下都能寫博客啦，真ㄅㄧㄤˋ !:laughing:
-補上頭圖的PIXIV [ZIPANG](https://www.pixiv.net/artworks/76752787)

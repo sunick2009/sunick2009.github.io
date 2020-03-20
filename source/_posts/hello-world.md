@@ -8,8 +8,8 @@ tags:
 categories: 教學
 comments: true
 description:
-top_img: https://i.imgur.com/gKaHhTW.png
-cover: https://i.imgur.com/gKaHhTW.png
+top_img: https://i.imgur.com/9trn2TO.jpg
+cover: https://i.imgur.com/9trn2TO.jpg
 ---
 ## 導言
 噹噹噹:confetti_ball: :confetti_ball: :confetti_ball: 終於開張啦，在此期許自己會多分享許多有趣的技術文章，或是些生活趣聞
@@ -208,5 +208,3 @@ img.emoji {
 但不知道為啥咪他的人氣都不高呢，希望他有一天能成為知名的翻唱歌手:two_hearts: 
 **こんばんは～(niconico同時配信)**
 [![](https://img.youtube.com/vi/rxjTLGJta9U/0.jpg)](http://www.youtube.com/watch?v=rxjTLGJta9U "こんばんは～(niconico同時配信)")
-另外付上頭圖的PIXIV
-[鏡のむこう](https://www.pixiv.net/artworks/76243022)

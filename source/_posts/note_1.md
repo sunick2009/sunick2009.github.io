@@ -8,8 +8,8 @@ tags:
 categories: 筆記
 comments: true
 description:
-top_img: https://imgur.com/J3MOpjn.png
-cover: https://imgur.com/J3MOpjn.png
+top_img: https://i.imgur.com/JqjofcG.jpg
+cover: https://i.imgur.com/JqjofcG.jpg
 ---
 ## 導言
 最近在做定期的SERVER維護，來筆記下做版本升級所發現的事好了:grin: 
@@ -45,7 +45,3 @@ $ sudo a2emnod php7.2
 $ sudo systemctl restart apache2
 ```
 這樣就搞定了
-
----
-## 題外話
-附上頭圖的[PIXIV](https://www.pixiv.net/artworks/78157723)
