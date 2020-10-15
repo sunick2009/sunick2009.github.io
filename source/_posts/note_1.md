@@ -17,7 +17,7 @@ cover: https://i.imgur.com/JqjofcG.jpg
 ---
 ## "-d"的差異
 
-通常做版本身升級，都是直接
+通常做版本升級，都是直接
 ```shell
 $ sudo do-release-upgrade
 ```
