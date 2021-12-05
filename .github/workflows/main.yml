@@ -51,7 +51,7 @@ jobs:
 
     - name: Deploy hexo blog
       env: 
-        GITHUB_REPO: https://github.com/sunick2009/sunick2009.github.io
+        GITHUB_REPO: github.com/sunick2009/sunick2009.github.io
       run: |
         cd ./public && git init && git add .
         git config user.name "sunick2009"
