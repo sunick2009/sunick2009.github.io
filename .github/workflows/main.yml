@@ -1,0 +1,61 @@
+name: Automatically deploy website
+
+on:
+  push:
+    branches: 
+      - hexo-source
+
+env:
+  TZ: Asia/Taipei
+
+jobs:
+  blog-cicd:
+    name: Hexo blog build & deploy
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout codes
+      uses: actions/checkout@v2
+
+    - name: Setup node
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+
+    - name: Cache node modules
+      uses: actions/cache@v1
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+
+    - name: Install hexo dependencies
+      run: |
+        npm install hexo-cli
+        npm install cheerio@0.22.0 –save # prepare theme
+        npm install hexo-renderer-pug hexo-renderer-stylus --save
+        npm un hexo-renderer-marked --save # change render
+        npm install hexo-renderer-markdown-it --save
+        npm install markdown-it-emoji --save # add emoji plugin
+        npm install hexo-generator-search --save # prepare local search
+        npm install hexo-generator-feed # prepare rss
+        npm install hexo-generator-sitemap # prepare sitemap
+        npm install hexo-wordcount --save #prepare wordcount function
+        git fetch #add edited file
+        git checkout -- node_modules/markdown-it-emoji/index.js
+
+    - name: Generate files
+      run: |
+        hexo clean
+        hexo generate
+
+
+    - name: Deploy hexo blog
+      env: 
+        GITHUB_REPO: https://github.com/sunick2009/sunick2009.github.io
+      run: |
+        cd ./public && git init && git add .
+        git config user.name "sunick2009"
+        git config user.email "sunick2009@gmail.com"
+        git add .
+        git commit -m "GitHub Actions Auto Builder at $(date +'%Y-%m-%d %H:%M:%S')"
+        git push --force --quiet "https://${{ secrets.ACCESS_TOKEN }}@$GITHUB_REPO" master:master
