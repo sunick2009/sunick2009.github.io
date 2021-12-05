@@ -31,15 +31,15 @@ jobs:
     - name: Install hexo dependencies
       run: |
         npm install hexo-cli
-        npm install cheerio@0.22.0 –save # prepare theme
-        npm install hexo-renderer-pug hexo-renderer-stylus --save
-        npm un hexo-renderer-marked --save # change render
-        npm install hexo-renderer-markdown-it --save
-        npm install markdown-it-emoji --save # add emoji plugin
-        npm install hexo-generator-search --save # prepare local search
-        npm install hexo-generator-feed # prepare rss
-        npm install hexo-generator-sitemap # prepare sitemap
-        npm install hexo-wordcount --save #prepare wordcount function
+        npm install cheerio@0.22.0
+        npm install hexo-renderer-pug hexo-renderer-stylus
+        npm un hexo-renderer-marked
+        npm install hexo-renderer-markdown-it
+        npm install markdown-it-emoji
+        npm install hexo-generator-search
+        npm install hexo-generator-feed
+        npm install hexo-generator-sitemap
+        npm install hexo-wordcount
         git fetch #add edited file
         git checkout -- node_modules/markdown-it-emoji/index.js
 
