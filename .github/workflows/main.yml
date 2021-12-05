@@ -45,6 +45,7 @@ jobs:
 
     - name: Generate files
       run: |
+        hexo clean
         hexo generate
 
 
