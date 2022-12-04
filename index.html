@@ -1,0 +1,124 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5"><title>SUSU's BLOG</title><meta name="description" content=""><meta name="author" content="SUSU"><meta name="copyright" content="SUSU"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="google-site-verification" content="google-site-verification=BVjq85QtM1ejI-lD_4FfPiOJGFi_y_396uGllb_WK78"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="SUSU's BLOG"><meta name="twitter:description" content=""><meta name="twitter:image" content="https://imgur.com/BwKsEfG.jpg"><meta property="og:type" content="website"><meta property="og:title" content="SUSU's BLOG"><meta property="og:url" content="https://sunick2009.github.io/"><meta property="og:site_name" content="SUSU's BLOG"><meta property="og:description" content=""><meta property="og:image" content="https://imgur.com/BwKsEfG.jpg"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>const autoChangeMode = 'false'
+var t = Cookies.get("theme");
+if (autoChangeMode == '1'){
+const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+const isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+if (t === undefined){
+  if (isLightMode) activateLightMode()
+  else if (isDarkMode) activateDarkMode()
+  else if (isNotSpecified || hasNoSupport){
+    console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+    now = new Date();
+    hour = now.getHours();
+    isNight = hour < 6 || hour >= 18
+    isNight ? activateDarkMode() : activateLightMode()
+}
+} else if (t == 'light') activateLightMode()
+else activateDarkMode()
+
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="https://sunick2009.github.io/"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-158679472-1', 'auto');
+ga('send', 'pageview');
+</script><link rel="preload" href="https://imgur.com/qG9piTA.jpg" as="image"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查詢的內容:${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  copy: {
+    success: '複製成功',
+    error: '複製錯誤',
+    noSupport: '瀏覽器不支持'
+  },
+  bookmark: {
+    title: 'Snackbar.bookmark.title',
+    message_prev: '按',
+    message_next: '鍵將本頁加入書籤'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  isHome: true,
+  isPost: false
+  
+}</script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="SUSU's BLOG" type="application/atom+xml">
+</head><body><header> <div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">SUSU's BLOG</a></span><span class="toggle-menu pull_right close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 時間軸</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分類</span></a></div><div class="menus_item"><a class="site-page" href="/message%20board/"><i class="fa-fw fa fa-comments"></i><span> 留言板</span></a></div></div></span><span class="pull_right" id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></span></div></header><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://imgur.com/BwKsEfG.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">5</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">標籤</div><div class="length_num">8</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分類</div><div class="length_num">2</div></a></div></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 時間軸</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分類</span></a></div><div class="menus_item"><a class="site-page" href="/message%20board/"><i class="fa-fw fa fa-comments"></i><span> 留言板</span></a></div></div></div></div><div id="body-wrap"><nav class="full_page" id="nav" style="background-image: url(https://imgur.com/qG9piTA.jpg)"><div id="site-info"><div id="site-title"><span class="blogtitle">SUSU's BLOG</span></div><div id="site-sub-title"><span class="subtitle"></span></div><div id="site-social-icons"><a class="social-icon" href="https://github.com/sunick2009" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a><a class="social-icon" href="mailto:sunick2009@gmail.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a><a class="social-icon" href="/atom.xml" target="_blank"><i class="fa fa-rss" aria-hidden="true"></i></a></div></div><div class="scroll-down"><i class="fa fa-angle-down scroll-down-effects"></i></div></nav><main id="content-outer"><div class="layout_page" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item article-container"><div class="post_cover left_radius"><a href="/2022/03/05/digital_forensics_2022_03_05/" title="數位鑑識筆記 - SMBLoris"><img class="post_bg lazyload" data-src="https://imgur.com/ZbnCCYY.jpg" onerror="this.onerror=null;this.src='https://imgur.com/ED0wFaA.jpg'" alt="數位鑑識筆記 - SMBLoris"></a></div><div class="recent-post-info">  <a class="article-title" href="/2022/03/05/digital_forensics_2022_03_05/" title="數位鑑識筆記 - SMBLoris">數位鑑識筆記 - SMBLoris</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2022-03-05</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/%E7%AD%86%E8%A8%98/">筆記</a></span><div class="content">導言
+雖然上次說要把每次老師教的課程做紀錄
+但每次上課不一定有教新的漏洞，有時比較偏向單純的鑑識
+在系統裡找犯罪的痕跡，不太好寫一篇報告
+不過這學期仍有相關的課，那我就來把學到的攻擊做一遍練習吧
+
+主題
+這次練習的是SMBLoris
+已經消失的官網這邊用archive.org找出來給大家看
+由@ze ...</div></div></div><div class="recent-post-item article-container"><div class="post_cover right_radius"><a href="/2021/12/05/digital_forensics_2021_12_05/" title="數位鑑識筆記 - Shellshock"><img class="post_bg lazyload" data-src="https://imgur.com/4WtLHTa.jpg" onerror="this.onerror=null;this.src='https://imgur.com/ED0wFaA.jpg'" alt="數位鑑識筆記 - Shellshock"></a></div><div class="recent-post-info">  <a class="article-title" href="/2021/12/05/digital_forensics_2021_12_05/" title="數位鑑識筆記 - Shellshock">數位鑑識筆記 - Shellshock</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2021-12-05</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/%E7%AD%86%E8%A8%98/">筆記</a></span><div class="content">導言
+最近正在上學校裡上數位鑑識相關課程
+老師推薦的學習方式是每練習一次攻擊後，得利用各種工具及指令找出攻擊痕跡
+所以這一系列的筆記總共會分為兩個部分
+
+攻擊過程
+鑑識過程
+
+事不宜遲，總共約一個月的課程，期望自己能每次上完課都能更新
+
+主題
+本次練習的攻擊手法為Shellshock(CVE-201 ...</div></div></div><div class="recent-post-item article-container"><div class="post_cover left_radius"><a href="/2020/02/23/note_1/" title="升級Linux"><img class="post_bg lazyload" data-src="https://i.imgur.com/JqjofcG.jpg" onerror="this.onerror=null;this.src='https://imgur.com/ED0wFaA.jpg'" alt="升級Linux"></a></div><div class="recent-post-info">  <a class="article-title" href="/2020/02/23/note_1/" title="升級Linux">升級Linux</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-02-23</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/%E7%AD%86%E8%A8%98/">筆記</a></span><div class="content">導言
+最近在做定期的SERVER維護，來筆記下做版本升級所發現的事好了
+
+&quot;-d&quot;的差異
+通常做版本升級，都是直接
+shell1$ sudo do-release-upgrade
+可是如果在本身版本是LTS的情況下，在發布時間的前後就會有No new release found的 ...</div></div></div><div class="recent-post-item article-container"><div class="post_cover right_radius"><a href="/2020/02/18/deploy/" title="利用 Travis CI 做自動化部署"><img class="post_bg lazyload" data-src="https://i.imgur.com/iLeCvsr.jpg" onerror="this.onerror=null;this.src='https://imgur.com/ED0wFaA.jpg'" alt="利用 Travis CI 做自動化部署"></a></div><div class="recent-post-info">  <a class="article-title" href="/2020/02/18/deploy/" title="利用 Travis CI 做自動化部署">利用 Travis CI 做自動化部署</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-02-18</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E5%AD%B8/">教學</a></span><div class="content">導言
+當你打造好了漂漂亮亮的網站當然是就要部署啊，所以這篇我們來談談部署吧
+這邊我採用的方案是部署到GitHub Pages上，畢竟不用錢(hen窮 想省錢   
+不過我們來看看Hexo的官方文檔，支援相當多部署的方式呢，有GitHub Pages、GitLab Pages、Heroku、
+Netl ...</div></div></div><div class="recent-post-item article-container"><div class="post_cover left_radius"><a href="/2020/02/17/hello-world/" title="SUSU的個人博客開張啦"><img class="post_bg lazyload" data-src="https://i.imgur.com/9trn2TO.jpg" onerror="this.onerror=null;this.src='https://imgur.com/ED0wFaA.jpg'" alt="SUSU的個人博客開張啦"></a></div><div class="recent-post-info">  <a class="article-title" href="/2020/02/17/hello-world/" title="SUSU的個人博客開張啦">SUSU的個人博客開張啦</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-02-17</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/%E6%95%99%E5%AD%B8/">教學</a></span><div class="content">導言
+噹噹噹   終於開張啦，在此期許自己會多分享許多有趣的技術文章，或是些生活趣聞
+俗話說萬事起頭難嘛，所以第一步就是要弄一個簡單的博客
+但是第一步在設定主題的時候就遇到了一些蠢事
+
+蠢事1
+不要自己亂加空白
+如下，這是作者給的模板，可是我貼到config怎沒生效呢???
+yaml12345678 ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://imgur.com/BwKsEfG.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"><div class="author-info__name">SUSU</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length_num">5</div></a></div><div class="card-info-data-item is-center">      <a href="/tags/"><div class="headline">標籤</div><div class="length_num">8</div></a></div><div class="card-info-data-item is-center">     <a href="/categories/"><div class="headline">分類</div><div class="length_num">2</div></a></div></div><div class="card-info-bookmark is-center"><a class="bookmark button--primary button--animated" id="bookmark-it" href="javascript:;" title="加入書籤" target="_self"><i class="fa fa-bookmark" aria-hidden="true"></i><span>加入書籤</span></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/sunick2009" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a><a class="social-icon" href="mailto:sunick2009@gmail.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a><a class="social-icon" href="/atom.xml" target="_blank"><i class="fa fa-rss" aria-hidden="true"></i></a></div></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fa fa-bullhorn card-announcement-animation" aria-hidden="true"></i><span>公告</span></div><div class="announcement_content">開張啦，歡迎光臨(*ﾟ∀ﾟ*)</div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fa fa-history" aria-hidden="true"></i><span>最新文章</span></div><div class="aside-recent-item"> <div class="aside-recent-post"><a href="/2022/03/05/digital_forensics_2022_03_05/"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="https://imgur.com/ZbnCCYY.jpg" onerror="this.onerror=null;this.src='https://imgur.com/ED0wFaA.jpg'" title="數位鑑識筆記 - SMBLoris" alt="數位鑑識筆記 - SMBLoris"></div><div class="aside-post-title"><div class="aside-post_title" href="/2022/03/05/digital_forensics_2022_03_05/" title="數位鑑識筆記 - SMBLoris">數位鑑識筆記 - SMBLoris</div><time class="aside-post_meta post-meta__date">2022-03-05</time></div></a></div><div class="aside-recent-post"><a href="/2021/12/05/digital_forensics_2021_12_05/"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="https://imgur.com/4WtLHTa.jpg" onerror="this.onerror=null;this.src='https://imgur.com/ED0wFaA.jpg'" title="數位鑑識筆記 - Shellshock" alt="數位鑑識筆記 - Shellshock"></div><div class="aside-post-title"><div class="aside-post_title" href="/2021/12/05/digital_forensics_2021_12_05/" title="數位鑑識筆記 - Shellshock">數位鑑識筆記 - Shellshock</div><time class="aside-post_meta post-meta__date">2021-12-05</time></div></a></div><div class="aside-recent-post"><a href="/2020/02/23/note_1/"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="https://i.imgur.com/JqjofcG.jpg" onerror="this.onerror=null;this.src='https://imgur.com/ED0wFaA.jpg'" title="升級Linux" alt="升級Linux"></div><div class="aside-post-title"><div class="aside-post_title" href="/2020/02/23/note_1/" title="升級Linux">升級Linux</div><time class="aside-post_meta post-meta__date">2020-02-23</time></div></a></div><div class="aside-recent-post"><a href="/2020/02/18/deploy/"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="https://i.imgur.com/iLeCvsr.jpg" onerror="this.onerror=null;this.src='https://imgur.com/ED0wFaA.jpg'" title="利用 Travis CI 做自動化部署" alt="利用 Travis CI 做自動化部署"></div><div class="aside-post-title"><div class="aside-post_title" href="/2020/02/18/deploy/" title="利用 Travis CI 做自動化部署">利用 Travis CI 做自動化部署</div><time class="aside-post_meta post-meta__date">2020-02-18</time></div></a></div><div class="aside-recent-post"><a href="/2020/02/17/hello-world/"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="https://i.imgur.com/9trn2TO.jpg" onerror="this.onerror=null;this.src='https://imgur.com/ED0wFaA.jpg'" title="SUSU的個人博客開張啦" alt="SUSU的個人博客開張啦"></div><div class="aside-post-title"><div class="aside-post_title" href="/2020/02/17/hello-world/" title="SUSU的個人博客開張啦">SUSU的個人博客開張啦</div><time class="aside-post_meta post-meta__date">2020-02-17</time></div></a></div></div></div></div><div class="card-widget card-categories"><div class="card-content"><div class="item-headline"><i class="fa fa-folder-open" aria-hidden="true"></i><span>分類</span></div><ul class="aside-category-item">       <li class="aside-category-list"><a class="aside-category-list_link" href="/categories/%E6%95%99%E5%AD%B8/"><span class="aside-category-list_name">教學</span><span class="aside-category-list_length">2</span></a></li><li class="aside-category-list"><a class="aside-category-list_link" href="/categories/%E7%AD%86%E8%A8%98/"><span class="aside-category-list_name">筆記</span><span class="aside-category-list_length">3</span></a></li></ul></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fa fa-tags" aria-hidden="true"></i><span>標籤</span></div><div class="card-tag-cloud"><a href="/tags/CI/" style="font-size: 16px; color: #999">CI</a> <a href="/tags/Digital-forensics/" style="font-size: 24px; color: #99a9bf">Digital forensics</a> <a href="/tags/Linux/" style="font-size: 24px; color: #99a9bf">Linux</a> <a href="/tags/css/" style="font-size: 16px; color: #999">css</a> <a href="/tags/deploy/" style="font-size: 16px; color: #999">deploy</a> <a href="/tags/js/" style="font-size: 16px; color: #999">js</a> <a href="/tags/ubuntu/" style="font-size: 16px; color: #999">ubuntu</a> <a href="/tags/upgrade/" style="font-size: 16px; color: #999">upgrade</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fa fa-archive" aria-hidden="true"></i><span>歸檔</span></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/"><span class="archive-list-date">2022年03月</span><span class="archive-list-count">1</span></a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/"><span class="archive-list-date">2021年12月</span><span class="archive-list-count">1</span></a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/"><span class="archive-list-date">2020年02月</span><span class="archive-list-count">3</span></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fa fa-line-chart" aria-hidden="true"></i><span>網站資訊</span></div><div class="webinfo"><div class="webinfo-item"><div class="webinfo-article-name">文章數目 :</div><div class="webinfo-article-count">5</div></div><div class="webinfo-item"><div class="webinfo-runtime-name">已運行時間 :</div><div class="webinfo-runtime-count" id="webinfo-runtime-count" start_date="02/17/2020 15:00:00">     </div></div><div class="webinfo-item">      <div class="webinfo-site-uv-name">本站訪客數 :</div><div class="webinfo-site-uv-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="webinfo-site-name">本站總訪問量 :</div><div class="webinfo-site-pv-count" id="busuanzi_value_site_pv"></div></div></div></div></div></div></div></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By SUSU</div><div class="framework-info"><span>Power by </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="簡繁轉換" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜間模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="設置"><i class="fa fa-cog" aria-hidden="true"></i></div><i class="fa fa-arrow-up" id="go-up" title="回到頂部" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script id="canvas_nest" color="90,63,170" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/js/canvas-nest.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="https://cdn.jsdelivr.net/npm/typed.js"></script><script>var typed = new Typed(".subtitle", {
+strings: 'Keep learning,Think different'.split(","),
+startDelay: 300,
+typeSpeed: 100,
+loop: true,
+backSpeed: 50
+});</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>Powered by</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script>"use strict";if("serviceWorker"in navigator){navigator.serviceWorker.register("service-worker.js").then((function(reg){reg.onupdatefound=function(){var installingWorker=reg.installing;installingWorker.onstatechange=function(){switch(installingWorker.state){case"installed":if(navigator.serviceWorker.controller){console.log("New or updated content is available.")}else{console.log("Content is now available offline!")}break;case"redundant":console.error("The installing service worker became redundant.");break}}}}))["catch"]((function(e){console.error("Error during service worker registration:",e)}))}</script></body></html>
