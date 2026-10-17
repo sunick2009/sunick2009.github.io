@@ -4,7 +4,7 @@ hexo.extend.filter.register('after_post_render', data => {
 
   const cheerio = require('cheerio');
 
-  const $ = cheerio.load(data.content, { decodeEntities: false });
+  const $ = cheerio.load(data.content, { decodeEntities: false }, false);
   
   const images = $('img').not($('a>img'));
 
