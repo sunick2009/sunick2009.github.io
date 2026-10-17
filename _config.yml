@@ -18,7 +18,7 @@ root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
-  trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
+  trailing_index: false # Set to false to remove trailing 'index.html' from permalinks
   trailing_html: true # Set to false to remove trailing '.html' from permalinks
 
 # Directory
@@ -44,6 +44,7 @@ render_drafts: false
 post_asset_folder: false
 relative_link: false
 future: true
+syntax_highlighter: highlight.js
 highlight:
   enable: true
   line_number: true
@@ -93,7 +94,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: Butterfly
+theme: butterfly
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -108,7 +109,7 @@ search:
   path: search.xml
   field: post
   content: true
-  
+
 # Markdown-it config
 ## Docs: https://github.com/celsomiranda/hexo-renderer-markdown-it/wiki
 markdown:
@@ -125,10 +126,13 @@ markdown:
     - markdown-it-ins
     - markdown-it-sub
     - markdown-it-sup
-    - markdown-it-emoji
+    - name: ./lib/markdown-it-twemoji
   anchors:
     level: 2
     collisionSuffix: 'v'
-    permalink: false  
+    permalink: false
     permalinkClass: header-anchor
     permalinkSymbol: ¶
+
+# Keep generated dates stable across fresh checkouts.
+updated_option: date
