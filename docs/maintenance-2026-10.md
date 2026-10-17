@@ -31,7 +31,7 @@
 - 移除未啟用 PWA 所用的 `hexo-offline`、不再需要的舊 Cheerio、EJS renderer 與舊 Twemoji；Cheerio 新版僅供回歸檢查。
 - Twemoji 使用正式 Markdown-it 擴充，保留行內圖片，排除燈箱。
 - 友情連結資料轉成新版陣列格式，保留原本的範例資料。
-- Node.js 24、`npm ci`、固定 Actions commit；新增 PR 建置、輸出檢查及每月 Dependabot。
+- Node.js 24、`npm ci`、固定 Actions commit；新增 PR 建置、輸出檢查及Renovate 分組更新、major 核准與每月 lockfile 維護。
 - 沿用既有 master 分支與 ACCESS_TOKEN 部署方式，改為一般推送，不重寫發布歷史。
 
 ## 已完成的驗證

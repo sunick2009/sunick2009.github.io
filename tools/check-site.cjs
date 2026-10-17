@@ -49,6 +49,6 @@ assert.equal(search('entry').length, posts.length, 'Unexpected search post count
 const md = require('markdown-it')().use(require('../lib/markdown-it-twemoji'));
 const emoji = load(md.render(':smile:'))('img');
 assert(emoji.hasClass('emoji') && emoji.hasClass('no-lightbox'), 'Emoji renderer/lightbox regression');
-assert(emoji.attr('src').includes('twemoji@17.0.3/'), 'Emoji asset version changed');
+assert(emoji.attr('src').includes(`twemoji@${require('@twemoji/api/package.json').version}/`), 'Emoji asset version changed');
 assert.deepEqual(failures, [], 'Broken local links/assets or unsafe CDN version drift');
 console.log(`PASS: ${htmlFiles.length} HTML pages, ${posts.length} preserved posts, local links/assets, search, RSS/sitemap, comments mounts and emoji.`);
