@@ -5,7 +5,7 @@ hexo.extend.filter.register('after_post_render', data => {
 
   const $ = cheerio.load(data.content, {
     decodeEntities: false
-  });
+  }, false);
   var theme = hexo.theme.config;
 
   if (theme.highlight_shrink === 'none' && !theme.highlight_lang && !theme.highlight_copy) {
